@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, MapPin, Filter, Heart, Users, Baby, Folder as Elderly, Star, ArrowRight, Phone, Globe } from 'lucide-react';
+import Header from '../components/Header';
 
 const DiscoverSchemes = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -117,7 +118,7 @@ const DiscoverSchemes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -126,7 +127,7 @@ const DiscoverSchemes = () => {
             <h1 className="text-3xl font-bold text-gray-900">Discover Health Schemes</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Find government and private health schemes you're eligible for. 
+            Find government and private health schemes you're eligible for.
             Get personalized recommendations based on your location and profile.
           </p>
         </div>
@@ -142,8 +143,7 @@ const DiscoverSchemes = () => {
                 placeholder="Search schemes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
             </div>
 
             {/* State Filter */}
@@ -304,7 +304,7 @@ const DiscoverSchemes = () => {
                 setSelectedState('');
                 setSelectedCategory('');
                 setSelectedEligibility('');
-              }}
+              } }
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
               Clear All Filters
@@ -330,7 +330,7 @@ const DiscoverSchemes = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

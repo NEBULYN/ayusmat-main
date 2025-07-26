@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Heart, User, Phone, MapPin, Calendar, FileText, CheckCircle, ArrowRight } from 'lucide-react';
+import Header from '../components/Header';
 
 const schema = yup.object({
   firstName: yup.string().required('First name is required'),
@@ -42,7 +43,7 @@ const GetHealthID = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -51,7 +52,7 @@ const GetHealthID = () => {
             <h1 className="text-3xl font-bold text-gray-900">Get Your Health ID</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Create your lifetime Unique Health ID (UHID) in just a few simple steps. 
+            Create your lifetime Unique Health ID (UHID) in just a few simple steps.
             This will be your single identity for all healthcare services across India.
           </p>
         </div>
@@ -63,26 +64,20 @@ const GetHealthID = () => {
               const Icon = stepItem.icon;
               const isActive = step >= stepItem.number;
               const isCompleted = step > stepItem.number;
-              
+
               return (
                 <div key={stepItem.number} className="flex items-center">
                   <div className="flex flex-col items-center">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      isCompleted ? 'bg-green-500 text-white' :
-                      isActive ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'
-                    }`}>
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isCompleted ? 'bg-green-500 text-white' :
+                        isActive ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className={`mt-2 text-sm font-medium ${
-                      isActive ? 'text-blue-600' : 'text-gray-500'
-                    }`}>
+                    <span className={`mt-2 text-sm font-medium ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
                       {stepItem.title}
                     </span>
                   </div>
                   {index < steps.length - 1 && (
-                    <div className={`w-16 h-1 mx-4 ${
-                      step > stepItem.number ? 'bg-green-500' : 'bg-gray-200'
-                    }`} />
+                    <div className={`w-16 h-1 mx-4 ${step > stepItem.number ? 'bg-green-500' : 'bg-gray-200'}`} />
                   )}
                 </div>
               );
@@ -104,13 +99,12 @@ const GetHealthID = () => {
                     <input
                       {...register('firstName')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your first name"
-                    />
+                      placeholder="Enter your first name" />
                     {errors.firstName && (
                       <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Last Name *
@@ -118,8 +112,7 @@ const GetHealthID = () => {
                     <input
                       {...register('lastName')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your last name"
-                    />
+                      placeholder="Enter your last name" />
                     {errors.lastName && (
                       <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
                     )}
@@ -134,13 +127,12 @@ const GetHealthID = () => {
                     <input
                       type="date"
                       {...register('dateOfBirth')}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                     {errors.dateOfBirth && (
                       <p className="mt-1 text-sm text-red-600">{errors.dateOfBirth.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Gender *
@@ -169,13 +161,12 @@ const GetHealthID = () => {
                       type="tel"
                       {...register('phone')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter 10-digit mobile number"
-                    />
+                      placeholder="Enter 10-digit mobile number" />
                     {errors.phone && (
                       <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address *
@@ -184,8 +175,7 @@ const GetHealthID = () => {
                       type="email"
                       {...register('email')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your email address"
-                    />
+                      placeholder="Enter your email address" />
                     {errors.email && (
                       <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                     )}
@@ -217,8 +207,7 @@ const GetHealthID = () => {
                     {...register('address')}
                     rows={3}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your complete address"
-                  />
+                    placeholder="Enter your complete address" />
                   {errors.address && (
                     <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
                   )}
@@ -232,13 +221,12 @@ const GetHealthID = () => {
                     <input
                       {...register('pincode')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="6-digit pincode"
-                    />
+                      placeholder="6-digit pincode" />
                     {errors.pincode && (
                       <p className="mt-1 text-sm text-red-600">{errors.pincode.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       State *
@@ -258,7 +246,7 @@ const GetHealthID = () => {
                       <p className="mt-1 text-sm text-red-600">{errors.state.message}</p>
                     )}
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       District *
@@ -266,8 +254,7 @@ const GetHealthID = () => {
                     <input
                       {...register('district')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter district"
-                    />
+                      placeholder="Enter district" />
                     {errors.district && (
                       <p className="mt-1 text-sm text-red-600">{errors.district.message}</p>
                     )}
@@ -282,8 +269,7 @@ const GetHealthID = () => {
                     type="tel"
                     {...register('emergencyContact')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Emergency contact mobile number"
-                  />
+                    placeholder="Emergency contact mobile number" />
                   {errors.emergencyContact && (
                     <p className="mt-1 text-sm text-red-600">{errors.emergencyContact.message}</p>
                   )}
@@ -340,7 +326,7 @@ const GetHealthID = () => {
                     Download PDF
                   </button>
                 </div>
-                
+
                 <div className="bg-white border-2 border-green-200 rounded-lg p-6">
                   <Phone className="h-8 w-8 text-green-600 mx-auto mb-3" />
                   <h4 className="font-semibold text-gray-900 mb-2">SMS Confirmation</h4>
@@ -363,7 +349,7 @@ const GetHealthID = () => {
           )}
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

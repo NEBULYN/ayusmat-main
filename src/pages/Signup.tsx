@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Heart, Eye, EyeOff, Shield, CheckCircle, QrCode } from 'lucide-react';
 import { useAuth, UserRole } from '../contexts/AuthContext';
+import Header from '../components/Header';
 
 const baseSchema = {
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -112,7 +113,7 @@ const Signup = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12 px-4 sm:px-6 lg:px-8">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -136,26 +137,20 @@ const Signup = () => {
             ].map((stepItem, index) => {
               const isActive = step >= stepItem.number;
               const isCompleted = step > stepItem.number;
-              
+
               return (
                 <div key={stepItem.number} className="flex items-center">
                   <div className="flex flex-col items-center">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
-                      isCompleted ? 'bg-green-500 text-white' :
-                      isActive ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'
-                    }`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${isCompleted ? 'bg-green-500 text-white' :
+                        isActive ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
                       {isCompleted ? <CheckCircle className="h-5 w-5" /> : stepItem.number}
                     </div>
-                    <span className={`mt-2 text-xs font-medium ${
-                      isActive ? 'text-blue-600' : 'text-gray-500'
-                    }`}>
+                    <span className={`mt-2 text-xs font-medium ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
                       {stepItem.title}
                     </span>
                   </div>
                   {index < 2 && (
-                    <div className={`w-16 h-1 mx-4 ${
-                      step > stepItem.number ? 'bg-green-500' : 'bg-gray-200'
-                    }`} />
+                    <div className={`w-16 h-1 mx-4 ${step > stepItem.number ? 'bg-green-500' : 'bg-gray-200'}`} />
                   )}
                 </div>
               );
@@ -185,13 +180,10 @@ const Signup = () => {
                         type="radio"
                         value={role.value}
                         {...register('role')}
-                        className="sr-only"
-                      />
-                      <div className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                        selectedRole === role.value 
-                          ? 'border-blue-500 bg-blue-50' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}>
+                        className="sr-only" />
+                      <div className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${selectedRole === role.value
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'}`}>
                         <div className="text-center">
                           <div className="text-3xl mb-2">{role.icon}</div>
                           <div className="font-medium text-gray-900">{role.label}</div>
@@ -215,8 +207,7 @@ const Signup = () => {
                   <input
                     {...register('name')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your full name"
-                  />
+                    placeholder="Enter your full name" />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
                   )}
@@ -230,8 +221,7 @@ const Signup = () => {
                     type="tel"
                     {...register('phone')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter 10-digit mobile number"
-                  />
+                    placeholder="Enter 10-digit mobile number" />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
                   )}
@@ -246,8 +236,7 @@ const Signup = () => {
                   type="email"
                   {...register('email')}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your email address"
-                />
+                  placeholder="Enter your email address" />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                 )}
@@ -263,8 +252,7 @@ const Signup = () => {
                     <input
                       {...register('licenseNumber')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter license number"
-                    />
+                      placeholder="Enter license number" />
                     {errors.licenseNumber && (
                       <p className="mt-1 text-sm text-red-600">{errors.licenseNumber.message}</p>
                     )}
@@ -300,8 +288,7 @@ const Signup = () => {
                     <input
                       {...register('hospitalName')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter hospital name"
-                    />
+                      placeholder="Enter hospital name" />
                     {errors.hospitalName && (
                       <p className="mt-1 text-sm text-red-600">{errors.hospitalName.message}</p>
                     )}
@@ -313,8 +300,7 @@ const Signup = () => {
                     <input
                       {...register('hospitalId')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter registration ID"
-                    />
+                      placeholder="Enter registration ID" />
                     {errors.hospitalId && (
                       <p className="mt-1 text-sm text-red-600">{errors.hospitalId.message}</p>
                     )}
@@ -349,8 +335,7 @@ const Signup = () => {
                     <input
                       {...register('employeeId')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter employee ID"
-                    />
+                      placeholder="Enter employee ID" />
                     {errors.employeeId && (
                       <p className="mt-1 text-sm text-red-600">{errors.employeeId.message}</p>
                     )}
@@ -369,8 +354,7 @@ const Signup = () => {
                       type={showPassword ? 'text' : 'password'}
                       {...register('password')}
                       className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Create a strong password"
-                    />
+                      placeholder="Create a strong password" />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
@@ -393,8 +377,7 @@ const Signup = () => {
                       type={showConfirmPassword ? 'text' : 'password'}
                       {...register('confirmPassword')}
                       className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Confirm your password"
-                    />
+                      placeholder="Confirm your password" />
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -415,8 +398,7 @@ const Signup = () => {
                   <input
                     type="checkbox"
                     {...register('terms')}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1"
-                  />
+                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1" />
                   <span className="text-sm text-gray-600">
                     I agree to the{' '}
                     <Link to="/terms" className="text-blue-600 hover:text-blue-500">
@@ -450,7 +432,7 @@ const Signup = () => {
                 <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Account Created Successfully!</h3>
                 <p className="text-gray-600">
-                  We've sent a verification email to your registered email address. 
+                  We've sent a verification email to your registered email address.
                   Please check your inbox and click the verification link.
                 </p>
               </div>
@@ -503,8 +485,7 @@ const Signup = () => {
                       onChange={(e) => setTwoFAToken(e.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center text-2xl tracking-widest"
                       placeholder="000000"
-                      maxLength={6}
-                    />
+                      maxLength={6} />
                   </div>
 
                   <button
@@ -539,7 +520,7 @@ const Signup = () => {
           )}
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

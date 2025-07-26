@@ -7,6 +7,7 @@ import {
   CheckCircle, ArrowRight, Phone, Mail, Globe,
   TrendingUp, Shield, Clock, Award
 } from 'lucide-react';
+import Header from '../components/Header';
 
 const schema = yup.object({
   organizationType: yup.string().required('Organization type is required'),
@@ -126,7 +127,7 @@ const PartnerWithUs = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -135,7 +136,7 @@ const PartnerWithUs = () => {
             <h1 className="text-3xl font-bold text-gray-900">Partner with AyuSmat</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join India's largest digital healthcare ecosystem. Transform your healthcare operations 
+            Join India's largest digital healthcare ecosystem. Transform your healthcare operations
             with seamless integration and enhanced patient care.
           </p>
         </div>
@@ -154,7 +155,7 @@ const PartnerWithUs = () => {
           {/* Left Column - Benefits */}
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Why Partner with AyuSmat?</h2>
-            
+
             <div className="space-y-6 mb-8">
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
@@ -204,7 +205,7 @@ const PartnerWithUs = () => {
           {/* Right Column - Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Start Your Partnership Journey</h2>
-            
+
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Organization Type */}
               <div>
@@ -220,13 +221,10 @@ const PartnerWithUs = () => {
                           type="radio"
                           value={type.value}
                           {...register('organizationType')}
-                          className="sr-only"
-                        />
-                        <div className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                          selectedOrgType === type.value 
-                            ? 'border-blue-500 bg-blue-50' 
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}>
+                          className="sr-only" />
+                        <div className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${selectedOrgType === type.value
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-gray-300'}`}>
                           <div className="text-center">
                             <Icon className="h-6 w-6 mx-auto mb-2 text-blue-600" />
                             <div className="text-sm font-medium text-gray-900">{type.label}</div>
@@ -250,8 +248,7 @@ const PartnerWithUs = () => {
                   <input
                     {...register('organizationName')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter organization name"
-                  />
+                    placeholder="Enter organization name" />
                   {errors.organizationName && (
                     <p className="mt-1 text-sm text-red-600">{errors.organizationName.message}</p>
                   )}
@@ -264,8 +261,7 @@ const PartnerWithUs = () => {
                   <input
                     {...register('contactPerson')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter contact person name"
-                  />
+                    placeholder="Enter contact person name" />
                   {errors.contactPerson && (
                     <p className="mt-1 text-sm text-red-600">{errors.contactPerson.message}</p>
                   )}
@@ -281,8 +277,7 @@ const PartnerWithUs = () => {
                     type="email"
                     {...register('email')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter email address"
-                  />
+                    placeholder="Enter email address" />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                   )}
@@ -296,8 +291,7 @@ const PartnerWithUs = () => {
                     type="tel"
                     {...register('phone')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter 10-digit mobile number"
-                  />
+                    placeholder="Enter 10-digit mobile number" />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
                   )}
@@ -312,8 +306,7 @@ const PartnerWithUs = () => {
                   <input
                     {...register('designation')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your designation"
-                  />
+                    placeholder="Your designation" />
                   {errors.designation && (
                     <p className="mt-1 text-sm text-red-600">{errors.designation.message}</p>
                   )}
@@ -326,8 +319,7 @@ const PartnerWithUs = () => {
                   <input
                     {...register('location')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="City, State"
-                  />
+                    placeholder="City, State" />
                   {errors.location && (
                     <p className="mt-1 text-sm text-red-600">{errors.location.message}</p>
                   )}
@@ -362,8 +354,7 @@ const PartnerWithUs = () => {
                   {...register('currentSystems')}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Describe your current healthcare management systems"
-                />
+                  placeholder="Describe your current healthcare management systems" />
                 {errors.currentSystems && (
                   <p className="mt-1 text-sm text-red-600">{errors.currentSystems.message}</p>
                 )}
@@ -377,8 +368,7 @@ const PartnerWithUs = () => {
                   {...register('integrationNeeds')}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="What specific integrations or features are you looking for?"
-                />
+                  placeholder="What specific integrations or features are you looking for?" />
                 {errors.integrationNeeds && (
                   <p className="mt-1 text-sm text-red-600">{errors.integrationNeeds.message}</p>
                 )}
@@ -411,8 +401,7 @@ const PartnerWithUs = () => {
                   {...register('message')}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Any additional information or questions?"
-                />
+                  placeholder="Any additional information or questions?" />
               </div>
 
               <button
@@ -434,7 +423,7 @@ const PartnerWithUs = () => {
               Our partnership team is ready to help you integrate AyuSmat into your healthcare operations.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <Phone className="h-8 w-8 mx-auto mb-3" />
@@ -454,7 +443,7 @@ const PartnerWithUs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

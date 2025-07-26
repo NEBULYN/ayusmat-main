@@ -6,6 +6,7 @@ import {
   Calendar, Clock, Video, Users, CheckCircle, 
   ArrowRight, Monitor, Smartphone, Globe 
 } from 'lucide-react';
+import Header from '../components/Header';
 
 const schema = yup.object({
   name: yup.string().required('Name is required'),
@@ -117,7 +118,7 @@ const ScheduleDemo = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -126,7 +127,7 @@ const ScheduleDemo = () => {
             <h1 className="text-3xl font-bold text-gray-900">Schedule a Demo</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See AyuSmat in action! Book a personalized demonstration to understand how our 
+            See AyuSmat in action! Book a personalized demonstration to understand how our
             digital healthcare platform can transform your organization.
           </p>
         </div>
@@ -189,7 +190,7 @@ const ScheduleDemo = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Book Your Demo Session</h2>
-              
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 {/* Personal Information */}
                 <div className="grid md:grid-cols-2 gap-4">
@@ -200,8 +201,7 @@ const ScheduleDemo = () => {
                     <input
                       {...register('name')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your full name"
-                    />
+                      placeholder="Enter your full name" />
                     {errors.name && (
                       <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
                     )}
@@ -215,8 +215,7 @@ const ScheduleDemo = () => {
                       type="email"
                       {...register('email')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter your email"
-                    />
+                      placeholder="Enter your email" />
                     {errors.email && (
                       <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                     )}
@@ -232,8 +231,7 @@ const ScheduleDemo = () => {
                       type="tel"
                       {...register('phone')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter 10-digit mobile number"
-                    />
+                      placeholder="Enter 10-digit mobile number" />
                     {errors.phone && (
                       <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
                     )}
@@ -246,8 +244,7 @@ const ScheduleDemo = () => {
                     <input
                       {...register('role')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="e.g., CTO, Medical Director"
-                    />
+                      placeholder="e.g., CTO, Medical Director" />
                     {errors.role && (
                       <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>
                     )}
@@ -263,8 +260,7 @@ const ScheduleDemo = () => {
                     <input
                       {...register('organization')}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Enter organization name"
-                    />
+                      placeholder="Enter organization name" />
                     {errors.organization && (
                       <p className="mt-1 text-sm text-red-600">{errors.organization.message}</p>
                     )}
@@ -301,13 +297,10 @@ const ScheduleDemo = () => {
                           type="radio"
                           value={demo.value}
                           {...register('demoType')}
-                          className="sr-only"
-                        />
-                        <div className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                          selectedDemoType === demo.value 
-                            ? 'border-blue-500 bg-blue-50' 
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}>
+                          className="sr-only" />
+                        <div className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${selectedDemoType === demo.value
+                            ? 'border-blue-500 bg-blue-50'
+                            : 'border-gray-200 hover:border-gray-300'}`}>
                           <div className="text-center">
                             <div className="font-medium text-gray-900 text-sm">{demo.title}</div>
                             <div className="text-xs text-gray-500 mt-1">{demo.duration}</div>
@@ -331,8 +324,7 @@ const ScheduleDemo = () => {
                       type="date"
                       {...register('preferredDate')}
                       min={new Date().toISOString().split('T')[0]}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                     {errors.preferredDate && (
                       <p className="mt-1 text-sm text-red-600">{errors.preferredDate.message}</p>
                     )}
@@ -385,8 +377,7 @@ const ScheduleDemo = () => {
                     {...register('specificInterests')}
                     rows={3}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="What specific features or use cases would you like to see?"
-                  />
+                    placeholder="What specific features or use cases would you like to see?" />
                 </div>
 
                 <div>
@@ -397,8 +388,7 @@ const ScheduleDemo = () => {
                     {...register('questions')}
                     rows={3}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Any specific questions or requirements you'd like us to address?"
-                  />
+                    placeholder="Any specific questions or requirements you'd like us to address?" />
                 </div>
 
                 <button
@@ -433,7 +423,7 @@ const ScheduleDemo = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

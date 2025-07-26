@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Heart, Eye, EyeOff, Shield, Smartphone, Mail } from 'lucide-react';
 import { useAuth, UserRole } from '../contexts/AuthContext';
+import Header from '../components/Header';
 
 const schema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -68,7 +69,7 @@ const Login = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <><Header /><div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
@@ -104,13 +105,10 @@ const Login = () => {
                         type="radio"
                         value={role.value}
                         {...register('role')}
-                        className="sr-only"
-                      />
-                      <div className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                        selectedRole === role.value 
-                          ? 'border-blue-500 bg-blue-50' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}>
+                        className="sr-only" />
+                      <div className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${selectedRole === role.value
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300'}`}>
                         <div className="text-center">
                           <div className="text-2xl mb-1">{role.icon}</div>
                           <div className="text-sm font-medium text-gray-900">{role.label}</div>
@@ -134,8 +132,7 @@ const Login = () => {
                   type="email"
                   {...register('email')}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your email"
-                />
+                  placeholder="Enter your email" />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                 )}
@@ -151,8 +148,7 @@ const Login = () => {
                     type={showPassword ? 'text' : 'password'}
                     {...register('password')}
                     className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your password"
-                  />
+                    placeholder="Enter your password" />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
@@ -207,8 +203,7 @@ const Login = () => {
                     type="email"
                     {...register('email')}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your email"
-                  />
+                    placeholder="Enter your email" />
                   <button
                     onClick={handleOTPLogin}
                     disabled={isLoading}
@@ -228,8 +223,7 @@ const Login = () => {
                     onChange={(e) => setOtp(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center text-2xl tracking-widest"
                     placeholder="000000"
-                    maxLength={6}
-                  />
+                    maxLength={6} />
                   <button
                     onClick={handleOTPVerify}
                     disabled={isLoading || otp.length !== 6}
@@ -267,7 +261,7 @@ const Login = () => {
                 <Mail className="h-5 w-5" />
                 <span>{showOTPLogin ? 'Login with Password' : 'Login with OTP'}</span>
               </button>
-              
+
               <button className="w-full flex items-center justify-center space-x-2 border-2 border-green-300 text-green-700 py-3 px-4 rounded-lg font-medium hover:bg-green-50 transition-colors">
                 <Smartphone className="h-5 w-5" />
                 <span>Use Authenticator App</span>
@@ -297,7 +291,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
